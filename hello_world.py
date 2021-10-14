@@ -22,6 +22,8 @@ def greetings():
             return redirect(url_for("task_b", usr=user))
         elif target == "task3":
             return redirect(url_for("task_c", usr=user))
+        elif target == "task4":
+            return redirect(url_for("task_d", usr=user))
         
     else:
         return render_template("test.html")
@@ -49,6 +51,11 @@ def task_c(usr):
     return f'''<h1>{usr}, </h1><br>
     <p>I couldn't find what to write in here!! Hope you like this</p>
     <a href="/test"><button >BACK</button></a>'''
+
+@app.route("/task4/<usr>")
+def task_d(usr):
+    element = "Hi "+usr+", this is a {{ }} operator"
+    return render_template("sample.html", space=element)
 
 if __name__ == "__main__":
     app.run(debug=True)
